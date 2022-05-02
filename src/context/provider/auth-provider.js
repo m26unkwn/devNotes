@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createContext, useReducer, useContext } from "react";
 import authReducer from "../reducer/auth-reducer";
-import { useVideos } from "./video-provider";
 
 const AuthContext = createContext();
 
@@ -16,7 +15,6 @@ const initialAuthState = {
 
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialAuthState);
-  const { videoDispatch } = useVideos();
 
   const getUserLogin = async (email, password) => {
     try {
@@ -46,22 +44,6 @@ const AuthProvider = ({ children }) => {
           email: foundUser.email,
           lastName: foundUser.lastName,
         },
-      });
-      videoDispatch({
-        type: "ADD_VIDEO_INTO_LIKES",
-        payload: foundUser.likes,
-      });
-      videoDispatch({
-        type: "ADD_VIDEO_INTO_HISTORY",
-        payload: foundUser.history,
-      });
-      videoDispatch({
-        type: "ADD_VIDEO_INTO_PLAYLIST",
-        payload: foundUser.playlist,
-      });
-      videoDispatch({
-        type: "ADD_VIDEO_INTO_WATCH_LATER",
-        payload: foundUser.watchlater,
       });
     } catch ({
       response: {
@@ -105,30 +87,6 @@ const AuthProvider = ({ children }) => {
           foundUser: createdUser,
         }),
       );
-      authDispatch({
-        type: "ADD_TOKEN",
-        payload: encodedToken,
-      });
-      authDispatch({
-        type: "ADD_USER_DATA",
-        payload: createdUser,
-      });
-      videoDispatch({
-        type: "ADD_VIDEO_INTO_LIKES",
-        payload: createdUser.likes,
-      });
-      videoDispatch({
-        type: "ADD_VIDEO_INTO_HISTORY",
-        payload: createdUser.history,
-      });
-      videoDispatch({
-        type: "ADD_VIDEO_INTO_PLAYLIST",
-        payload: createdUser.playlist,
-      });
-      videoDispatch({
-        type: "ADD_VIDEO_INTO_WATCH_LATER",
-        payload: createdUser.watchlater,
-      });
     } catch ({
       response: {
         data: { error },
