@@ -1,0 +1,54 @@
+.landing-wrapper{
+    width: min(900px,100%);
+    margin-inline: auto ;
+}
+header{
+    margin-top: 4rem;
+    font-size: 2rem;
+}
+.landing-content{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    
+}
+
+.landing-image{
+    width: 550px;
+}
+
+.landing-cta{
+    margin-top: 2.5rem;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.landing-content-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.content-primary > *+*{
+    color: var(--secondary-color);
+}
+
+.content-cta{
+    margin-top: 5rem;
+    margin-right: auto;
+}
+.login-link{
+    margin-top:1rem;
+}
+.login-link > a{
+    
+    color: var(--primary-color);
+    text-decoration: none;
+}
+/* responsiveness */
+@media screen and (max-width:780px){
+    .landing-content{
+        flex-direction: column;
+    }
+}
