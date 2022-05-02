@@ -1,5 +1,6 @@
 import React from "react";
 import "./landing.css";
+
 import { Hero } from "../../assets";
 import { Link } from "react-router-dom";
 
