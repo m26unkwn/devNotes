@@ -20,7 +20,7 @@ export const Login = () => {
   let lastLocation =
     location.state?.lastLocation?.pathname ||
     location.state?.location.pathname ||
-    "/";
+    "/home";
 
   const onChangeHandler = (e, type) => {
     dispatch({ type, payload: e.target.value });
