@@ -8,3 +8,4 @@ export { Home } from "./home/Home";
 export { Lable } from "./labels/Lable";
 export { Archive } from "./archive/Archive";
 export { Trash } from "./trash/Trash";
+export { Profile } from "./profile/Profile";

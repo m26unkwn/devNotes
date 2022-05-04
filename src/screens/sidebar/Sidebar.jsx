@@ -28,7 +28,7 @@ export const Sidebar = () => {
               <span className='nav-title'>Home</span>
             </NavLink>
             <NavLink
-              to='/labels'
+              to='/lable'
               className={({ isActive }) =>
                 isActive ? "sidebar-items nav-link-active " : "sidebar-items"
               }>

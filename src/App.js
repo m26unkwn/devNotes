@@ -2,7 +2,7 @@
 
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
-import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
+import { PrivateRoute } from "./components";
 import {
   Landing,
   Archive,
@@ -12,6 +12,7 @@ import {
   Home,
   Lable,
   Trash,
+  Profile,
 } from "./screens";
 
 function App() {
@@ -29,38 +30,13 @@ function App() {
 
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route
-          path='/home'
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/labels'
-          element={
-            <PrivateRoute>
-              <Lable />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/archive'
-          element={
-            <PrivateRoute>
-              <Archive />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/trash'
-          element={
-            <PrivateRoute>
-              <Trash />
-            </PrivateRoute>
-          }
-        />
+        <Route element={<PrivateRoute />}>
+          <Route path='/home' element={<Home />} />
+          <Route path='/lable' element={<Lable />} />
+          <Route path='/archive' element={<Archive />} />
+          <Route path='/trash' element={<Trash />} />
+          <Route path='/profile' element={<Profile />} />
+        </Route>
       </Routes>
     </div>
   );
