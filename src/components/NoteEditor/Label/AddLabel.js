@@ -27,6 +27,7 @@ export const AddLabel = () => {
             placeholder='enter label'
             value={label.label}
             onChange={labelHandler}
+            autoFocus
           />
         </div>
 

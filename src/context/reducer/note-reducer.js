@@ -10,8 +10,10 @@ export default function noteReducer(state, action) {
       return { ...state, lables: [...state.lables, action.label] };
     case "REMOVE_LABEL":
       const filteredLabel = state.lables.filter(
-        (lable) => lable.id != action.id,
+        (lable) => lable.id !== action.id,
       );
       return { ...state, lables: [...filteredLabel] };
+    case "ADD_PRIORITY":
+      return { ...state, priority: action.priority };
   }
 }

@@ -11,8 +11,7 @@
     border-radius: 40px;
 }
 .lable-chip>p{
-    padding: 0 15px;
-}
+padding:2px 0 2px 15px}
 
 .chip-btn{
     all: unset;

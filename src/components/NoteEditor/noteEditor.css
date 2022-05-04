@@ -42,3 +42,8 @@
 .note-action-container{
     padding: 1.2rem;
 }
+
+.select-priority{
+    border-radius:4px ;
+    padding: 4px;
+}
