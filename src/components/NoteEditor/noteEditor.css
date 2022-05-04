@@ -1,0 +1,44 @@
+.note-editor{
+    width: 600px;
+    margin: auto;
+    margin-top: 5rem;
+    color: rgb(39, 37, 37);
+}
+
+.title-container{
+    padding:10px;
+}
+
+.title:empty::before{
+    color: rgb(62, 60, 60);
+}
+.title[data-placeholder]:not([data-placeholder=""]):empty::before {
+  content: attr(data-placeholder);
+}
+.title:empty::before {
+  content: 'fallback placeholder';
+}
+.title:focus{
+    outline: none;
+}
+
+.title{
+    padding: 10px;
+    color: #202124;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.text-container{
+    padding: 10px;
+}
+.text{
+    padding: 10px;
+    color: #202124;
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+.note-action-container{
+    padding: 1.2rem;
+}

@@ -10,7 +10,7 @@ import {
   Sidebar,
   Signup,
   Home,
-  Lable,
+  Label,
   Trash,
   Profile,
 } from "./screens";
@@ -32,11 +32,19 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route element={<PrivateRoute />}>
           <Route path='/home' element={<Home />} />
-          <Route path='/lable' element={<Lable />} />
+          <Route path='/label' element={<Label />} />
           <Route path='/archive' element={<Archive />} />
           <Route path='/trash' element={<Trash />} />
           <Route path='/profile' element={<Profile />} />
         </Route>
+        <Route
+          path='/home'
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );

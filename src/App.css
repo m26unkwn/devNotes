@@ -32,3 +32,7 @@ body {
   display: grid;
   grid-template-columns: 15rem 1fr;
 }
+.btn-icon:hover{
+      opacity: 0.87;
+      background-color: rgba(95, 99, 104, 0.157);
+}
