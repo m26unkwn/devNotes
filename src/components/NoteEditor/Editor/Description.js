@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from "react";
 import { useNote } from "../../../context";
 
 export const Description = () => {
@@ -7,24 +8,22 @@ export const Description = () => {
     noteDispatch,
   } = useNote();
 
+
   const dispatchDescription = (e) => {
     noteDispatch({
       type: "ADD_DESCRIPTION",
-      description: e.currentTarget.textContent,
+      description: e.target.value,
     });
   };
 
   return (
     <div className='text-container'>
-      <div
+      <textarea
         className='title text'
-        data-placeholder='enter note'
-        contentEditable={true}
-        aria-multiline={true}
-        role='textbox'
-        aria-label={"Title"}
-        tabIndex={0}
-        onInput={dispatchDescription}></div>
+        placeholder='enter note...'
+        value={description}
+        onChange={dispatchDescription}
+      />
     </div>
   );
 };

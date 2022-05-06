@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Bookmark, Color, Add } from "../../assets";
 import { useNote } from "../../context";
+import { useHandler } from "../../hooks/use-handler";
 import { Description } from "./Editor/Description";
 import { Title } from "./Editor/Title";
 import { AddLabel } from "./Label/AddLabel";
@@ -13,7 +14,7 @@ import { Priority } from "./Priority/Priority";
 export const NoteEditor = () => {
   const [pallete, setPallete] = useState(false);
   const [lable, setLable] = useState(false);
-
+  const [handlers] = useHandler();
   const {
     noteState: { color },
   } = useNote();
@@ -21,6 +22,12 @@ export const NoteEditor = () => {
   const toggle = (setState, removeState) => {
     removeState(false);
     setState((prev) => !prev);
+  };
+
+  const addToNotes = () => {
+    handlers.addNote();
+    setLable(false);
+    setPallete(false);
   };
 
   return (
@@ -42,7 +49,7 @@ export const NoteEditor = () => {
           </div>
           <Priority />
         </div>
-        <div className='note-add-btn  btn btn-icon'>
+        <div onClick={addToNotes} className='note-add-btn  btn btn-icon'>
           <img src={Add} alt='add-note' />
         </div>
       </div>

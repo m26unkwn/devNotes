@@ -24,14 +24,19 @@ export const AddLabel = () => {
         <div className='input-field label-input'>
           <input
             type='text'
+            name='title'
+            id='title'
             placeholder='enter label'
             value={label.label}
             onChange={labelHandler}
+            required='required'
             autoFocus
+            aria-required
           />
         </div>
 
         <button
+          type='submit'
           disabled={!label.label.trim(" ")}
           onClick={dispatchLable}
           className='btn btn-icon'>

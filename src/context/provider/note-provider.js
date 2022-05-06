@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import noteReducer from "../reducer/note-reducer";
+import allNoteReducer from "../reducer/all-note-reducer";
 
 const initialNoteState = {
   title: "",
@@ -7,16 +8,26 @@ const initialNoteState = {
   color: "",
   lables: [],
 };
+const initialAllNoteState = {
+  notes: [],
+};
 const NoteContext = createContext({});
 
 const NoteProvider = ({ children }) => {
   const [noteState, noteDispatch] = useReducer(noteReducer, initialNoteState);
-
-  return (
-    <NoteContext.Provider value={{ noteState, noteDispatch }}>
-      {children}
-    </NoteContext.Provider>
+  const [allNotes, allNoteDispatch] = useReducer(
+    allNoteReducer,
+    initialAllNoteState,
   );
+
+  const value = {
+    allNoteDispatch,
+    noteDispatch,
+    noteState,
+    allNotes,
+  };
+
+  return <NoteContext.Provider value={value}>{children}</NoteContext.Provider>;
 };
 
 const useNote = () => useContext(NoteContext);
