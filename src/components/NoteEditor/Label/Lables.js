@@ -1,6 +1,6 @@
 import React from "react";
-import { Remove } from "../../../assets";
 import { useNote } from "../../../context";
+import { Chip } from "../../Chips/Chip";
 import "./label.css";
 
 export const Lables = () => {
@@ -14,17 +14,23 @@ export const Lables = () => {
   };
 
   return (
-    <div className='label-chip-container flex'>
+    <div className='label-chip-container flex flex-wrap'>
       {lables.map((label) => (
-        <div key={label.id} className='lable-chip flex ai-center jc-between'>
-          <p className="'chips">{label.label}</p>
+        <Chip
+          key={label.id}
+          label={label.label}
+          dispatch={removeLabelDispatch}
+          id={label.id}
+        />
+        // <div key={label.id} className='lable-chip flex ai-center jc-between'>
+        //   <p className="'chips">{label.label}</p>
 
-          <button
-            onClick={() => removeLabelDispatch(label.id)}
-            className='chip-btn btn-icon flex ai-center'>
-            <img src={Remove} alt='remove-label' />
-          </button>
-        </div>
+        //   <button
+        //     onClick={() => removeLabelDispatch(label.id)}
+        //     className='chip-btn btn-icon flex ai-center'>
+        //     <img src={Remove} alt='remove-label' />
+        //   </button>
+        // </div>
       ))}
     </div>
   );

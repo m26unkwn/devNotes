@@ -1,5 +1,4 @@
 import React from "react";
-import { useRef } from "react";
 import { useNote } from "../../../context";
 
 export const Description = () => {
@@ -7,7 +6,6 @@ export const Description = () => {
     noteState: { description },
     noteDispatch,
   } = useNote();
-
 
   const dispatchDescription = (e) => {
     noteDispatch({
@@ -19,8 +17,9 @@ export const Description = () => {
   return (
     <div className='text-container'>
       <textarea
-        className='title text'
+        className=' text'
         placeholder='enter note...'
+        multiline='true'
         value={description}
         onChange={dispatchDescription}
       />

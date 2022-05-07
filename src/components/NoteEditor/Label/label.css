@@ -5,18 +5,3 @@
     padding: 0 20px;
     gap: 10px;
 }
-.lable-chip{
-    background-color: rgb(242, 242, 242);
-    width: fit-content;
-    border-radius: 40px;
-}
-.lable-chip>p{
-padding:2px 0 2px 15px}
-
-.chip-btn{
-    all: unset;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 4px;
-}

@@ -16,7 +16,7 @@ export const NoteEditor = () => {
   const [lable, setLable] = useState(false);
   const [handlers] = useHandler();
   const {
-    noteState: { color },
+    noteState: { color, title, description },
   } = useNote();
 
   const toggle = (setState, removeState) => {
@@ -25,7 +25,11 @@ export const NoteEditor = () => {
   };
 
   const addToNotes = () => {
-    handlers.addNote();
+    if (title.length || description.length) {
+      handlers.addNote();
+    } else {
+      alert("Enter Note");
+    }
     setLable(false);
     setPallete(false);
   };
