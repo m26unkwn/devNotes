@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { Bookmark, Color, Add } from "../../assets";
 import { useNote } from "../../context";
-import { useHandler } from "../../hooks/use-handler";
 import { Description } from "./Editor/Description";
 import { Title } from "./Editor/Title";
 import { AddLabel } from "./Label/AddLabel";
@@ -11,22 +10,19 @@ import "./noteEditor.css";
 import { Pallete } from "./Pallete/Pallete";
 import { Priority } from "./Priority/Priority";
 
-export const NoteEditor = () => {
+export const NoteEditor = ({ addNote, noteState, noteDispatch }) => {
   const [pallete, setPallete] = useState(false);
   const [lable, setLable] = useState(false);
-  const [handlers] = useHandler();
-  const {
-    noteState: { color, title, description },
-  } = useNote();
+  const { color, title, description, lables } = noteState;
 
-  const toggle = (setState, removeState) => {
-    removeState(false);
+  const toggle = (setState, toggleState) => {
+    toggleState(false);
     setState((prev) => !prev);
   };
 
   const addToNotes = () => {
-    if (title.length || description.length) {
-      handlers.addNote();
+    if (title.trim(" ").length > 0 || description.trim(" ").length > 0) {
+      addNote();
     } else {
       alert("Enter Note");
     }
@@ -36,9 +32,9 @@ export const NoteEditor = () => {
 
   return (
     <div style={{ background: color }} className='note-editor card-container'>
-      <Title />
-      <Description />
-      <Lables />
+      <Title title={title} noteDispatch={noteDispatch} />
+      <Description description={description} noteDispatch={noteDispatch} />
+      <Lables lables={lables} noteDispatch={noteDispatch} />
       <div className='note-action-container flex jc-between ai-center'>
         <div className='note-btn flex flex-gap'>
           <div
@@ -51,14 +47,14 @@ export const NoteEditor = () => {
             className='btn btn-icon'>
             <img src={Bookmark} alt='color-pallete' />
           </div>
-          <Priority />
+          <Priority noteDispatch={noteDispatch} />
         </div>
         <div onClick={addToNotes} className='note-add-btn  btn btn-icon'>
           <img src={Add} alt='add-note' />
         </div>
       </div>
-      {pallete && <Pallete setPallete={setPallete} />}
-      {lable && <AddLabel />}
+      {pallete && <Pallete noteDispatch={noteDispatch} />}
+      {lable && <AddLabel noteDispatch={noteDispatch} />}
     </div>
   );
 };

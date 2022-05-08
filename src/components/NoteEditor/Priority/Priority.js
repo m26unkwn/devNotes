@@ -1,8 +1,6 @@
 import React from "react";
-import { useNote } from "../../../context";
 
-export const Priority = () => {
-  const { noteDispatch } = useNote();
+export const Priority = ({ noteDispatch }) => {
   const dispatchPriority = (e) => {
     noteDispatch({ type: "ADD_PRIORITY", priority: e.target.value });
   };

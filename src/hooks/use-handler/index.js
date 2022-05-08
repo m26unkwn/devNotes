@@ -7,7 +7,13 @@ export const useHandler = () => {
     authState: { token },
   } = useAuth();
 
-  const { allNoteDispatch, noteState, noteDispatch } = useNote();
+  const {
+    allNoteDispatch,
+    noteState,
+    updateNote,
+    noteDispatch,
+    updateDispatch,
+  } = useNote();
 
   //const { setToast, setLoading } = useToast();
   // const navigate = useNavigate();
@@ -24,7 +30,7 @@ export const useHandler = () => {
         data: body,
         headers: headers,
       });
-      console.log("server calls",data[property]);
+      console.log("server calls", data[property]);
       allNoteDispatch({ type, payload: data[property] });
       //   setToast({
       //     toastVarient: "success",
@@ -59,8 +65,28 @@ export const useHandler = () => {
     ).then(() => noteDispatch({ type: "RESET_NOTE" }));
   };
 
+  const editNote = () => {
+    serverCalls(
+      "post",
+      `/api/notes/${updateNote._id}`,
+      "ADD_NOTE_INTO_NOTES",
+      "notes",
+
+      {
+        note: updateNote,
+      },
+    ).then(() => updateDispatch({ type: "RESET_NOTE" }));
+  };
+
+  const deleteNote = (id) => {
+    console.log("hello");
+    serverCalls("delete", `/api/notes/${id}`, "ADD_NOTE_INTO_NOTES", "notes");
+  };
+
   const handlers = {
     addNote,
+    editNote,
+    deleteNote,
   };
 
   return [handlers];

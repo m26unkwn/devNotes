@@ -1,4 +1,4 @@
-export default function noteReducer(state, action) {
+export default function updateReducer(state, action) {
   switch (action.type) {
     case "ADD_TITLE":
       return { ...state, title: action.title };
@@ -15,7 +15,8 @@ export default function noteReducer(state, action) {
       return { ...state, lables: [...filteredLabel] };
     case "ADD_PRIORITY":
       return { ...state, priority: action.priority };
-
+    case "EDIT_NOTE_STATE":
+      return action.note;
     case "RESET_NOTE":
       return {
         title: "",

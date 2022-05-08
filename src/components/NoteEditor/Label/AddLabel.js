@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { Add } from "../../../assets";
-import { useNote } from "../../../context";
 import "./label.css";
-export const AddLabel = () => {
+export const AddLabel = ({ noteDispatch }) => {
   const [label, setLabel] = useState({
     id: "",
     label: "",
   });
-  const { noteDispatch } = useNote();
 
   const labelHandler = (e) => {
     setLabel({ id: uuid(), label: e.target.value });

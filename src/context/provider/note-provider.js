@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 import noteReducer from "../reducer/note-reducer";
 import allNoteReducer from "../reducer/all-note-reducer";
+import updateReducer from "../reducer/update-reducer";
 
 const initialNoteState = {
   title: "",
@@ -15,6 +16,7 @@ const NoteContext = createContext({});
 
 const NoteProvider = ({ children }) => {
   const [noteState, noteDispatch] = useReducer(noteReducer, initialNoteState);
+  const [updateNote, updateDispatch] = useReducer(updateReducer, {});
   const [allNotes, allNoteDispatch] = useReducer(
     allNoteReducer,
     initialAllNoteState,
@@ -23,6 +25,8 @@ const NoteProvider = ({ children }) => {
   const value = {
     allNoteDispatch,
     noteDispatch,
+    updateDispatch,
+    updateNote,
     noteState,
     allNotes,
   };

@@ -1,14 +1,8 @@
 import React from "react";
-import { useNote } from "../../../context";
 import { Chip } from "../../Chips/Chip";
 import "./label.css";
 
-export const Lables = () => {
-  const {
-    noteState: { lables },
-    noteDispatch,
-  } = useNote();
-
+export const Lables = ({ noteDispatch, lables }) => {
   const removeLabelDispatch = (id) => {
     noteDispatch({ type: "REMOVE_LABEL", id: id });
   };

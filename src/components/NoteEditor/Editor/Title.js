@@ -1,11 +1,6 @@
 import React from "react";
-import { useNote } from "../../../context";
 
-export const Title = () => {
-  const {
-    noteState: { title },
-    noteDispatch,
-  } = useNote();
+export const Title = ({ title, noteDispatch }) => {
   const dispatchTitle = (e) => {
     noteDispatch({ type: "ADD_TITLE", title: e.target.value });
   };

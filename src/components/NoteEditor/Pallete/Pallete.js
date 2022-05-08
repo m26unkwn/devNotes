@@ -1,5 +1,4 @@
 import React from "react";
-import { useNote } from "../../../context";
 import "./pallete.css";
 
 const colors = [
@@ -8,8 +7,7 @@ const colors = [
   { color: "#a7ffeb" },
   { color: "#d7aefb" },
 ];
-export const Pallete = () => {
-  const { noteDispatch } = useNote();
+export const Pallete = ({ noteDispatch }) => {
   const dispatchColor = (color) => {
     noteDispatch({ type: "ADD_COLOR", color: color });
   };
