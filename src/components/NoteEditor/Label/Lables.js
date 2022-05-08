@@ -16,15 +16,6 @@ export const Lables = ({ noteDispatch, lables }) => {
           dispatch={removeLabelDispatch}
           id={label.id}
         />
-        // <div key={label.id} className='lable-chip flex ai-center jc-between'>
-        //   <p className="'chips">{label.label}</p>
-
-        //   <button
-        //     onClick={() => removeLabelDispatch(label.id)}
-        //     className='chip-btn btn-icon flex ai-center'>
-        //     <img src={Remove} alt='remove-label' />
-        //   </button>
-        // </div>
       ))}
     </div>
   );

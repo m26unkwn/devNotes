@@ -9,17 +9,6 @@
     padding:10px;
 }
 
-/* .title:empty::before{
-    color: rgb(62, 60, 60);
-}
-.title[data-placeholder]:not([data-placeholder=""]):empty::before {
-  content: attr(data-placeholder);
-}
-.title:empty::before {
-  content: 'fallback placeholder';
-}
-
-} */
 .title:focus {
     outline: none;}
 .title{
