@@ -11,3 +11,7 @@ export { default as Close } from "./Close.svg";
 export { default as Archive } from "./Download.svg";
 export { default as Hero } from "./hero.svg";
 export { default as Bookmark } from "./Bookmark.svg";
+export { default as Color } from "./Color.svg";
+export { default as Add } from "./Add.svg";
+export { default as Remove } from "./Remove.svg";
+export { default as Edit } from "./Edit.svg";

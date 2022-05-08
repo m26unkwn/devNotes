@@ -20,7 +20,7 @@ export const getAllNotesHandler = function (schema, request) {
       {},
       {
         errors: ["The email you entered is not Registered. Not Found error"],
-      }
+      },
     );
   }
   return new Response(200, {}, { notes: user.notes });
@@ -41,11 +41,11 @@ export const createNoteHandler = function (schema, request) {
         {},
         {
           errors: ["The email you entered is not Registered. Not Found error"],
-        }
+        },
       );
     }
     const { note } = JSON.parse(request.requestBody);
-    if (!note.tags) {
+    if (!note.lables) {
       user.notes.push({ ...note, _id: uuid(), tags: [] });
     } else {
       user.notes.push({ ...note, _id: uuid() });
@@ -58,7 +58,7 @@ export const createNoteHandler = function (schema, request) {
       {},
       {
         error,
-      }
+      },
     );
   }
 };
@@ -77,7 +77,7 @@ export const deleteNoteHandler = function (schema, request) {
         {},
         {
           errors: ["The email you entered is not Registered. Not Found error"],
-        }
+        },
       );
     }
     const noteId = request.params.noteId;
@@ -90,7 +90,7 @@ export const deleteNoteHandler = function (schema, request) {
       {},
       {
         error,
-      }
+      },
     );
   }
 };
@@ -110,7 +110,7 @@ export const updateNoteHandler = function (schema, request) {
         {},
         {
           errors: ["The email you entered is not Registered. Not Found error"],
-        }
+        },
       );
     }
     const { note } = JSON.parse(request.requestBody);
@@ -125,7 +125,7 @@ export const updateNoteHandler = function (schema, request) {
       {},
       {
         error,
-      }
+      },
     );
   }
 };
@@ -145,7 +145,7 @@ export const archiveNoteHandler = function (schema, request) {
         {},
         {
           errors: ["The email you entered is not Registered. Not Found error"],
-        }
+        },
       );
     }
     const { noteId } = request.params;
@@ -156,7 +156,7 @@ export const archiveNoteHandler = function (schema, request) {
     return new Response(
       201,
       {},
-      { archives: user.archives, notes: user.notes }
+      { archives: user.archives, notes: user.notes },
     );
   } catch (error) {
     return new Response(
@@ -164,7 +164,7 @@ export const archiveNoteHandler = function (schema, request) {
       {},
       {
         error,
-      }
+      },
     );
   }
 };
