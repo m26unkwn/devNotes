@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Bookmark, Color, Add } from "../../assets";
-import { useNote } from "../../context";
 import { Description } from "./Editor/Description";
 import { Title } from "./Editor/Title";
 import { AddLabel } from "./Label/AddLabel";

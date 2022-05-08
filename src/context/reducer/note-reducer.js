@@ -23,5 +23,7 @@ export default function noteReducer(state, action) {
         color: "",
         lables: [],
       };
+    default:
+      return state;
   }
 }

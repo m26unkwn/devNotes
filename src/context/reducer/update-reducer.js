@@ -24,5 +24,7 @@ export default function updateReducer(state, action) {
         color: "",
         lables: [],
       };
+    default:
+      return state;
   }
 }

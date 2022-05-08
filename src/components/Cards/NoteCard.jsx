@@ -20,9 +20,9 @@ export const NoteCard = ({ note }) => {
     setEdit(true);
   };
 
-  const closeEdit = () => {
-    setEdit((prev) => !prev);
-  };
+  // const closeEdit = () => {
+  //   setEdit((prev) => !prev);
+  // };
 
   return (
     <div style={{ background: color }} className='card-container'>
