@@ -37,14 +37,6 @@ function App() {
           <Route path='/trash' element={<Trash />} />
           <Route path='/profile' element={<Profile />} />
         </Route>
-        <Route
-          path='/home'
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
       </Routes>
     </div>
   );
