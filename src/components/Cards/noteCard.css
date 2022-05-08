@@ -8,3 +8,11 @@
 .priority-container{
     padding:10px;
 }
+
+.card-content > p{
+    word-break: break-all;
+    color: inherit;
+    width: 100%;
+    height:auto;
+    overflow: hidden;
+}
