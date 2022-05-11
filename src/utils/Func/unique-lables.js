@@ -1,0 +1,10 @@
+export function uniqueLables(notes) {
+  return [
+    ...new Set(
+      notes
+        .map((label) => label.lables)
+        .flat()
+        .map((label) => label.label),
+    ),
+  ];
+}

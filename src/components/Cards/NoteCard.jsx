@@ -11,7 +11,7 @@ export const NoteCard = ({ note }) => {
   const { updateNote, updateDispatch } = useNote();
   const [edit, setEdit] = useState(false);
   const [handlers] = useHandler();
-  const { title, description, color, lables, priority, _id } = note;
+  const { title, description, color, lables, priority, _id, date } = note;
 
   console.log("id of deleted", _id);
 
@@ -20,12 +20,8 @@ export const NoteCard = ({ note }) => {
     setEdit(true);
   };
 
-  // const closeEdit = () => {
-  //   setEdit((prev) => !prev);
-  // };
-
   return (
-    <div style={{ background: color }} className='card-container'>
+    <div style={{ background: color }} className='note-card card-container'>
       {title && (
         <div className='card-head'>
           <b>{title}</b>
@@ -46,21 +42,27 @@ export const NoteCard = ({ note }) => {
           )}
         </div>
       )}
-      {priority && (
+      <div className=' date-container flex jc-between'>
+        {priority && (
+          <div className='priority-container flex ai-center '>
+            <Chip chipStyle='chip-pd' label={`${priority} Priority`} />
+          </div>
+        )}
         <div className='priority-container flex ai-center '>
-          <p>Priority : </p> <Chip chipStyle='chip-pd' label={priority} />
+          <Chip chipStyle='chip-pd' label={date} />
         </div>
-      )}
+      </div>
       <div className='card-action flex jc-around'>
         <button
+          title='Delete Note'
           onClick={() => handlers.deleteNote(_id)}
           className='btn btn-icon'>
           <img src={Delete} alt='add to trash' />
         </button>
-        <button className='btn btn-icon'>
+        <button title='Add To Archive' className='btn btn-icon'>
           <img src={Archive} alt='add to trash' />
         </button>
-        <button onClick={editNote} className='btn btn-icon'>
+        <button title='Edit Note' onClick={editNote} className='btn btn-icon'>
           <img src={Edit} alt='add to trash' />
         </button>
       </div>

@@ -2,6 +2,8 @@
 import { useAuth, useNote } from "../../context";
 import axios from "axios";
 
+const date = new Date().toLocaleString("en-In", "Asia-Kolkata").split(",")[0];
+
 export const useHandler = () => {
   const {
     authState: { token },
@@ -62,7 +64,7 @@ export const useHandler = () => {
       {
         note: noteState,
       },
-    ).then(() => noteDispatch({ type: "RESET_NOTE" }));
+    ).then(() => noteDispatch({ type: "RESET_NOTE", date: date }));
   };
 
   const editNote = () => {
@@ -75,7 +77,7 @@ export const useHandler = () => {
       {
         note: updateNote,
       },
-    ).then(() => updateDispatch({ type: "RESET_NOTE" }));
+    ).then(() => updateDispatch({ type: "RESET_NOTE", date: date }));
   };
 
   const deleteNote = (id) => {

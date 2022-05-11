@@ -23,7 +23,7 @@ function App() {
     location.pathname === "/login" ||
     location.pathname === "/signup";
   return (
-    <div className={locationFlag ? "" : "main-wrapper"}>
+    <div className={locationFlag ? "" : "main-grid-container"}>
       {!locationFlag && <Sidebar />}
       <Routes>
         <Route path='/' element={<Landing />} />
