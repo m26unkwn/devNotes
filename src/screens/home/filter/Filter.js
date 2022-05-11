@@ -1,5 +1,5 @@
 import { useFilter, useNote } from "../../../context";
-import { uniqueLables } from "../../../utils";
+import { uniqueLabels } from "../../../utils";
 
 export const Filter = () => {
   const {
@@ -10,7 +10,7 @@ export const Filter = () => {
     allNotes: { notes },
   } = useNote();
 
-  const labels = uniqueLables(notes);
+  const labels = uniqueLabels(notes);
 
   const dispatchFilter = (type, e) => {
     filterDispatch({ type: type, payload: e.target.value });
@@ -25,8 +25,7 @@ export const Filter = () => {
           <select
             value={label}
             onChange={(e) => dispatchFilter("LABEL", e)}
-            name='label'
-            defaultValue='all'>
+            name='label'>
             <option value='all'>All</option>
             {labels.length > 0 &&
               labels.map((label) => (

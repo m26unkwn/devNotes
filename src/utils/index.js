@@ -1,1 +1,1 @@
-export { uniqueLables } from "./Func/unique-lables";
+export { uniqueLabels } from "./Func/unique-lables";

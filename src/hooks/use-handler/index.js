@@ -22,7 +22,13 @@ export const useHandler = () => {
 
   // this function handle all the api calls
 
-  const serverCalls = async (method, url, type, property, body = null) => {
+  const serverCalls = async (
+    method,
+    url,
+    type,
+    property = null,
+    body = null,
+  ) => {
     const headers = { authorization: token };
     try {
       // setLoading(true);
@@ -32,8 +38,7 @@ export const useHandler = () => {
         data: body,
         headers: headers,
       });
-      console.log("server calls", data[property]);
-      allNoteDispatch({ type, payload: data[property] });
+      allNoteDispatch({ type, payload: property ? data[property] : data });
       //   setToast({
       //     toastVarient: "success",
       //     message: message,
@@ -80,15 +85,68 @@ export const useHandler = () => {
     ).then(() => updateDispatch({ type: "RESET_NOTE", date: date }));
   };
 
+  // delete note from Notes
+
   const deleteNote = (id) => {
-    console.log("hello");
     serverCalls("delete", `/api/notes/${id}`, "ADD_NOTE_INTO_NOTES", "notes");
+  };
+
+  // Add note into archive
+
+  const addArchive = (note) => {
+    serverCalls(
+      "post",
+      `/api/notes/archives/${note._id}`,
+      "ADD_VIDEO_INTO_ARCHIVE",
+      null,
+      {
+        note: note,
+      },
+    );
+  };
+
+  // Restore note from archive
+
+  const restoreFromArchives = (note) => {
+    serverCalls(
+      "post",
+      `/api/archives/restore/${note._id}`,
+      "ADD_VIDEO_INTO_ARCHIVE",
+    );
+  };
+
+  // Add note into archive
+
+  const addTrash = (note) => {
+    serverCalls(
+      "post",
+      `/api/notes/trash/${note._id}`,
+      "ADD_VIDEO_INTO_TRASH",
+      null,
+      {
+        note: note,
+      },
+    );
+  };
+
+  // Restore note from Trash
+
+  const restoreFromTrash = (note) => {
+    serverCalls(
+      "post",
+      `/api/trash/restore/${note._id}`,
+      "ADD_VIDEO_INTO_TRASH",
+    );
   };
 
   const handlers = {
     addNote,
     editNote,
     deleteNote,
+    addArchive,
+    restoreFromArchives,
+    addTrash,
+    restoreFromTrash,
   };
 
   return [handlers];

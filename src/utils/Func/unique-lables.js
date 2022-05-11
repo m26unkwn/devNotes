@@ -1,4 +1,4 @@
-export function uniqueLables(notes) {
+export function uniqueLabels(notes) {
   return [
     ...new Set(
       notes

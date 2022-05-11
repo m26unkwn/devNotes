@@ -16,7 +16,6 @@ export const Home = () => {
   } = useNote();
   const { filterState } = useFilter();
   const [handlers] = useHandler();
-  console.log({ notes });
 
   const filterdNotes = filterNotes(notes, filterState);
 
@@ -24,9 +23,7 @@ export const Home = () => {
     filterdNotes.length > 0 ? filterdNotes.filter((note) => !note.pin) : [];
   const pinnedNotes =
     filterdNotes.length > 0 ? filterdNotes.filter((note) => note.pin) : [];
-  console.log({ otherNotes });
 
-  //console.log("allnotes", notes);
   return (
     <div className='content-wrapper'>
       <NoteEditor

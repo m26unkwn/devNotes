@@ -1,6 +1,5 @@
 import React from "react";
 import { Pin, OutlinePin } from "../../../assets";
-import { useNote } from "../../../context";
 
 export const Title = ({ title, noteDispatch, pin }) => {
   const dispatchTitle = (e) => {

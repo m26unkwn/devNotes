@@ -1,24 +1,29 @@
 /** @format */
 
 import React from "react";
-import { NoteCard } from "../../components";
 import { useNote } from "../../context";
+import { Label } from "./Label/Label";
+import { uniqueLabels } from "../../utils";
+import "./labels.css";
 
-export const Archive = () => {
+export const Labels = () => {
   const {
-    allNotes: { archives },
+    allNotes: { notes },
   } = useNote();
+
+  const labels = uniqueLabels(notes);
+
   return (
     <div className='content-wrapper'>
       <div className='note-card-wrapper'>
         <div className='note-heading'>
-          <h1>Archive</h1>
+          <h1>Labels</h1>
         </div>
         <div className='label-container flex flex-col flex-wrap flex-gap'>
-          {archives.length > 0 ? (
-            archives.map((note) => <NoteCard key={note._id} note={note} />)
+          {labels.length > 0 ? (
+            labels.map((label) => <Label key={label} label={label} />)
           ) : (
-            <h2>You don't have any note in archive.</h2>
+            <h1>You dont have any Labels</h1>
           )}
         </div>
       </div>
