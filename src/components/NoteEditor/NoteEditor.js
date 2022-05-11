@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Bookmark, Color, Add } from "../../assets";
+import { Color, Add } from "../../assets";
+import { ReactComponent as LabelIcon } from "../../assets/Bookmark.svg";
 import { Description } from "./Editor/Description";
 import { Title } from "./Editor/Title";
 import { AddLabel } from "./Label/AddLabel";
@@ -46,7 +47,7 @@ export const NoteEditor = ({ addNote, noteState, noteDispatch }) => {
             title='Add Label'
             onClick={(e) => toggle(setLable, setPallete)}
             className='btn btn-icon'>
-            <img src={Bookmark} alt='label' />
+            <LabelIcon width='30' height='30' fill='black' />
           </div>
           <Priority noteDispatch={noteDispatch} />
         </div>
