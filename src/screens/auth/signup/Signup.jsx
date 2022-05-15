@@ -14,6 +14,7 @@ export const Signup = () => {
   const [signupState, dispatch] = useReducer(signUpReducer, signupInitialData);
   const {
     authState: { token, authError },
+    getUserSignUp,
   } = useAuth();
 
   const onChangeHandler = (e, type) => {
@@ -23,7 +24,12 @@ export const Signup = () => {
   const signupUser = (e) => {
     e.preventDefault();
     if (signupValidation(signupState, dispatch)) {
-      alert("Form is Valid");
+      getUserSignUp(
+        signupState.email,
+        signupState.password,
+        signupState.firstName,
+        signupState.lastName,
+      );
     }
   };
 
@@ -34,7 +40,7 @@ export const Signup = () => {
   return (
     <>
       {token ? (
-        <Navigate to='/' replace />
+        <Navigate to='/home' replace />
       ) : (
         <section className='auth-wrapper flex ai-center jc-center'>
           <div className='card-container auth-card'>

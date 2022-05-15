@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useReducer, useContext } from "react";
 import authReducer from "../reducer/auth-reducer";
 import { useNote } from "./note-provider";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -20,7 +21,7 @@ const AuthProvider = ({ children }) => {
 
   const getUserLogin = async (email, password) => {
     try {
-      let {
+      const {
         data: { encodedToken, foundUser },
       } = await axios({
         method: "post",
@@ -57,7 +58,7 @@ const AuthProvider = ({ children }) => {
       });
     } catch ({
       response: {
-        data: { error },
+        data: { errors },
         status,
       },
     }) {
@@ -72,7 +73,8 @@ const AuthProvider = ({ children }) => {
           error: "Email or  Password is not present",
         });
       }
-      console.log(error, status);
+      console.log(errors[0], status);
+      toast.error(errors[0]);
     }
   };
 
@@ -82,7 +84,7 @@ const AuthProvider = ({ children }) => {
         data: { encodedToken, createdUser },
       } = await axios({
         method: "post",
-        url: "/api/auth/login",
+        url: "/api/auth/signup",
         data: {
           email: email,
           password: password,
@@ -97,6 +99,19 @@ const AuthProvider = ({ children }) => {
           foundUser: createdUser,
         }),
       );
+
+      authDispatch({
+        type: "ADD_TOKEN",
+        payload: encodedToken,
+      });
+      authDispatch({
+        type: "ADD_USER_DATA",
+        payload: {
+          firstName: createdUser.firstName,
+          email: createdUser.email,
+          lastName: createdUser.lastName,
+        },
+      });
       allNoteDispatch({
         type: "ADD_ALL_DATA",
         payload: {
@@ -107,7 +122,7 @@ const AuthProvider = ({ children }) => {
       });
     } catch ({
       response: {
-        data: { error },
+        data: { errors },
         status,
       },
     }) {
@@ -117,13 +132,28 @@ const AuthProvider = ({ children }) => {
           error: "Email is already exist.",
         });
       }
-      console.log(error[0]);
+      toast.error(errors[0]);
+      console.log(errors[0]);
     }
+  };
+
+  const logoutUser = (e, navigate) => {
+    e.preventDefault();
+    authDispatch({ type: "LOGOUT_USER" });
+    allNoteDispatch({ type: "CLEAR_ALL_DATA_FROM_STATE" });
+    localStorage.removeItem("userData");
+    navigate("/");
   };
 
   return (
     <AuthContext.Provider
-      value={{ getUserLogin, getUserSignUp, authState, authDispatch }}>
+      value={{
+        getUserLogin,
+        logoutUser,
+        getUserSignUp,
+        authState,
+        authDispatch,
+      }}>
       {children}
     </AuthContext.Provider>
   );

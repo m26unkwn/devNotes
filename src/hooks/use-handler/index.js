@@ -1,6 +1,7 @@
 // import { useNavigate } from "react-router-dom";
 import { useAuth, useNote } from "../../context";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const date = new Date().toLocaleString("en-In", "Asia-Kolkata").split(",")[0];
 
@@ -26,6 +27,7 @@ export const useHandler = () => {
     method,
     url,
     type,
+    message,
     property = null,
     body = null,
   ) => {
@@ -39,20 +41,15 @@ export const useHandler = () => {
         headers: headers,
       });
       allNoteDispatch({ type, payload: property ? data[property] : data });
-      //   setToast({
-      //     toastVarient: "success",
-      //     message: message,
-      //     toast: true,
-      //   });
-      // setLoading(false);
-    } catch (error) {
-      //   setToast({
-      //     toast: true,
-      //     toastVarient: "failure",
-      //     message: "Something went wrong!!",
-      //   });
-      console.log("errror", error);
-      //setLoading(false);
+      toast.success(message);
+    } catch ({
+      response: {
+        data: { errors },
+        status,
+      },
+    }) {
+      toast.error(errors[0]);
+      console.log(errors[0]);
     }
   };
 
@@ -64,6 +61,7 @@ export const useHandler = () => {
       "post",
       "/api/notes",
       "ADD_NOTE_INTO_NOTES",
+      "Note Added",
       "notes",
 
       {
@@ -77,6 +75,7 @@ export const useHandler = () => {
       "post",
       `/api/notes/${updateNote._id}`,
       "ADD_NOTE_INTO_NOTES",
+      "Note Updated",
       "notes",
 
       {
@@ -88,7 +87,13 @@ export const useHandler = () => {
   // delete note from Notes
 
   const deleteNote = (id) => {
-    serverCalls("delete", `/api/notes/${id}`, "ADD_NOTE_INTO_NOTES", "notes");
+    serverCalls(
+      "delete",
+      `/api/notes/${id}`,
+      "ADD_NOTE_INTO_NOTES",
+      "Note Deleted",
+      "notes",
+    );
   };
 
   // Add note into archive
@@ -97,7 +102,8 @@ export const useHandler = () => {
     serverCalls(
       "post",
       `/api/notes/archives/${note._id}`,
-      "ADD_VIDEO_INTO_ARCHIVE",
+      "ADD_NOTE_INTO_ARCHIVE",
+      "Noted Added To Archive",
       null,
       {
         note: note,
@@ -111,7 +117,8 @@ export const useHandler = () => {
     serverCalls(
       "post",
       `/api/archives/restore/${note._id}`,
-      "ADD_VIDEO_INTO_ARCHIVE",
+      "ADD_NOTE_INTO_ARCHIVE",
+      "Note Restored From Archive",
     );
   };
 
@@ -121,7 +128,9 @@ export const useHandler = () => {
     serverCalls(
       "post",
       `/api/notes/trash/${note._id}`,
-      "ADD_VIDEO_INTO_TRASH",
+      "ADD_NOTE_INTO_TRASH",
+      "Note Added To Trash",
+
       null,
       {
         note: note,
@@ -135,7 +144,8 @@ export const useHandler = () => {
     serverCalls(
       "post",
       `/api/trash/restore/${note._id}`,
-      "ADD_VIDEO_INTO_TRASH",
+      "ADD_NOTE_INTO_TRASH",
+      "Note Restored From Trash",
     );
   };
 

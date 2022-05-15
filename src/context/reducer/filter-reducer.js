@@ -1,5 +1,3 @@
-import sortByDate from "../../utils/Func/sort-by-date";
-
 export default function filterReducer(state, action) {
   switch (action.type) {
     case "LABEL":
@@ -14,5 +12,7 @@ export default function filterReducer(state, action) {
         priority: "all",
         sortByDate: "",
       };
+    default:
+      return state;
   }
 }

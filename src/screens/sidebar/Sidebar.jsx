@@ -30,6 +30,7 @@ export const Sidebar = () => {
               return (
                 <NavLink
                   to={link.to}
+                  key={link.to}
                   className={({ isActive }) =>
                     isActive
                       ? "sidebar-items nav-link-active "

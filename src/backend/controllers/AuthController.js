@@ -69,7 +69,7 @@ export const loginHandler = function (schema, request) {
         404,
         {},
         {
-          errors: ["The email you entered is not Registered. Not Found error"],
+          errors: ["The email you entered is not Registered."],
         },
       );
     }

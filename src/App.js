@@ -3,6 +3,9 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import { PrivateRoute } from "./components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   Landing,
   Archive,
@@ -25,6 +28,7 @@ function App() {
   return (
     <div className={locationFlag ? "" : "main-grid-container"}>
       {!locationFlag && <Sidebar />}
+      <ToastContainer theme='colored' autoClose={2000} position='top-right' />
       <Routes>
         <Route path='/' element={<Landing />} />
 

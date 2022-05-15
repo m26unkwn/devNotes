@@ -21,7 +21,7 @@ export const Filter = () => {
       <h3 className='filter-head'>Filters</h3>
       <div className='flex flex-gap'>
         <div className=' filter-content flex flex-gap'>
-          <label for='label'>Label</label>
+          <label htmlFor='label'>Label</label>
           <select
             value={label}
             onChange={(e) => dispatchFilter("LABEL", e)}
@@ -36,7 +36,7 @@ export const Filter = () => {
           </select>
         </div>
         <div className=' filter-content flex flex-gap'>
-          <label for='priority'> Priority</label>
+          <label htmlFor='priority'> Priority</label>
           <select
             onChange={(e) => dispatchFilter("PRIORITY", e)}
             value={priority}
@@ -48,10 +48,11 @@ export const Filter = () => {
           </select>
         </div>
         <div className=' filter-content flex flex-gap '>
-          <label onChange={(e) => dispatchFilter("SORT_BY_DATE", e)} for='date'>
-            Date
-          </label>
-          <select value={sortByDate} name='date'>
+          <label htmlFor='date'>Date</label>
+          <select
+            value={sortByDate}
+            onChange={(e) => dispatchFilter("SORT_BY_DATE", e)}
+            name='date'>
             <option>Latest</option>
             <option>Oldest</option>
           </select>

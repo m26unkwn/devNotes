@@ -3,6 +3,8 @@ import { Pin, OutlinePin } from "../../../assets";
 
 export const Title = ({ title, noteDispatch, pin }) => {
   const dispatchTitle = (e) => {
+    e.target.style.height = "inherit";
+    e.target.style.height = `${e.target.scrollHeight}px`;
     noteDispatch({ type: "ADD_TITLE", title: e.target.value });
   };
 
@@ -12,7 +14,7 @@ export const Title = ({ title, noteDispatch, pin }) => {
 
   return (
     <div className='title-container flex'>
-      <input
+      <textarea
         value={title}
         className='title'
         placeholder='Title'
