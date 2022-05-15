@@ -15,12 +15,18 @@ export default function noteReducer(state, action) {
       return { ...state, lables: [...filteredLabel] };
     case "ADD_PRIORITY":
       return { ...state, priority: action.priority };
-
+    case "EDIT_NOTE_STATE":
+      return action.note;
+    case "TOGGLE_PIN":
+      return { ...state, pin: !state.pin };
     case "RESET_NOTE":
       return {
         title: "",
         description: "",
         color: "",
+        pin: false,
+        priority: "low",
+        date: action.date,
         lables: [],
       };
     default:

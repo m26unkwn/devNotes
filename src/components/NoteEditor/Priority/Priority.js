@@ -6,11 +6,10 @@ export const Priority = ({ noteDispatch }) => {
   };
   return (
     <div className='flex ai-center flex-gap'>
-      <p>Priority</p>
       <select onChange={dispatchPriority} className='select-priority'>
-        <option value='low'>Low</option>
-        <option value='medium'>Medium</option>
-        <option value='high'>High</option>
+        <option value='low'>Low Priority</option>
+        <option value='medium'>Medium Priority</option>
+        <option value='high'>High Priority</option>
       </select>
     </div>
   );

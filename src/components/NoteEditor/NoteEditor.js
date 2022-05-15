@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Bookmark, Color, Add } from "../../assets";
+import { Color, Add } from "../../assets";
+import { ReactComponent as LabelIcon } from "../../assets/Bookmark.svg";
 import { Description } from "./Editor/Description";
 import { Title } from "./Editor/Title";
 import { AddLabel } from "./Label/AddLabel";
@@ -12,7 +13,7 @@ import { Priority } from "./Priority/Priority";
 export const NoteEditor = ({ addNote, noteState, noteDispatch }) => {
   const [pallete, setPallete] = useState(false);
   const [lable, setLable] = useState(false);
-  const { color, title, description, lables } = noteState;
+  const { color, title, description, lables, pin } = noteState;
 
   const toggle = (setState, toggleState) => {
     toggleState(false);
@@ -31,24 +32,29 @@ export const NoteEditor = ({ addNote, noteState, noteDispatch }) => {
 
   return (
     <div style={{ background: color }} className='note-editor card-container'>
-      <Title title={title} noteDispatch={noteDispatch} />
+      <Title title={title} noteDispatch={noteDispatch} pin={pin} />
       <Description description={description} noteDispatch={noteDispatch} />
       <Lables lables={lables} noteDispatch={noteDispatch} />
       <div className='note-action-container flex jc-between ai-center'>
         <div className='note-btn flex flex-gap'>
           <div
+            title='Add Color'
             onClick={(e) => toggle(setPallete, setLable)}
             className='btn btn-icon'>
             <img src={Color} alt='color-pallete' />
           </div>
           <div
+            title='Add Label'
             onClick={(e) => toggle(setLable, setPallete)}
             className='btn btn-icon'>
-            <img src={Bookmark} alt='color-pallete' />
+            <LabelIcon width='30' height='30' fill='black' />
           </div>
           <Priority noteDispatch={noteDispatch} />
         </div>
-        <div onClick={addToNotes} className='note-add-btn  btn btn-icon'>
+        <div
+          title='Add Note'
+          onClick={addToNotes}
+          className='note-add-btn  btn btn-icon'>
           <img src={Add} alt='add-note' />
         </div>
       </div>

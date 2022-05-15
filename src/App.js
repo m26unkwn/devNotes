@@ -10,7 +10,7 @@ import {
   Sidebar,
   Signup,
   Home,
-  Label,
+  Labels,
   Trash,
   Profile,
 } from "./screens";
@@ -23,7 +23,7 @@ function App() {
     location.pathname === "/login" ||
     location.pathname === "/signup";
   return (
-    <div className={locationFlag ? "" : "main-wrapper"}>
+    <div className={locationFlag ? "" : "main-grid-container"}>
       {!locationFlag && <Sidebar />}
       <Routes>
         <Route path='/' element={<Landing />} />
@@ -32,19 +32,11 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route element={<PrivateRoute />}>
           <Route path='/home' element={<Home />} />
-          <Route path='/label' element={<Label />} />
+          <Route path='/labels' element={<Labels />} />
           <Route path='/archive' element={<Archive />} />
           <Route path='/trash' element={<Trash />} />
           <Route path='/profile' element={<Profile />} />
         </Route>
-        <Route
-          path='/home'
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
       </Routes>
     </div>
   );

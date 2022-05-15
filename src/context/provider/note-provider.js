@@ -1,22 +1,28 @@
 import { createContext, useContext, useReducer } from "react";
 import noteReducer from "../reducer/note-reducer";
 import allNoteReducer from "../reducer/all-note-reducer";
-import updateReducer from "../reducer/update-reducer";
+
+const date = new Date().toLocaleString("en-In", "Asia-Kolkata").split(",")[0];
 
 const initialNoteState = {
   title: "",
   description: "",
   color: "",
+  pin: false,
+  priority: "low",
+  date: date,
   lables: [],
 };
 const initialAllNoteState = {
   notes: [],
+  trash: [],
+  archive: [],
 };
 const NoteContext = createContext({});
 
 const NoteProvider = ({ children }) => {
   const [noteState, noteDispatch] = useReducer(noteReducer, initialNoteState);
-  const [updateNote, updateDispatch] = useReducer(updateReducer, {});
+  const [updateNote, updateDispatch] = useReducer(noteReducer, {});
   const [allNotes, allNoteDispatch] = useReducer(
     allNoteReducer,
     initialAllNoteState,

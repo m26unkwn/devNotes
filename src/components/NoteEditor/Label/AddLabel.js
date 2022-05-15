@@ -13,8 +13,10 @@ export const AddLabel = ({ noteDispatch }) => {
   };
   const dispatchLable = (e) => {
     e.preventDefault();
-    setLabel({ id: "", label: "" });
-    noteDispatch({ type: "ADD_LABEL", label: label });
+    if (label.label.length <= 10) {
+      noteDispatch({ type: "ADD_LABEL", label: label });
+      setLabel({ id: "", label: "" });
+    }
   };
   return (
     <div className='pallete-container card-container flex-gap'>
@@ -29,7 +31,7 @@ export const AddLabel = ({ noteDispatch }) => {
             onChange={labelHandler}
             required='required'
             autoFocus
-            aria-required
+            maxLength='10'
           />
         </div>
 

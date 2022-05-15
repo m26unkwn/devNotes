@@ -1,8 +1,22 @@
-.note-card-wrapper{
-    margin: 2rem 4rem;
-
+.content-wrapper {
+  grid-area: main;
 }
 
-.notes-card{
-    margin: auto;
+.note-card-wrapper {
+  margin: 2rem 4rem;
+}
+
+.notes-card {
+  margin: auto;
+}
+.note-heading {
+  margin: 2rem 0;
+}
+
+.filter-wrapper {
+  margin: 2rem 4rem;
+}
+
+option {
+  width: 30px;
 }

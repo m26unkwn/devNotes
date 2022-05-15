@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useReducer, useContext } from "react";
 import authReducer from "../reducer/auth-reducer";
+import { useNote } from "./note-provider";
 
 const AuthContext = createContext();
 
@@ -15,6 +16,7 @@ const initialAuthState = {
 
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialAuthState);
+  const { allNoteDispatch } = useNote();
 
   const getUserLogin = async (email, password) => {
     try {
@@ -43,6 +45,14 @@ const AuthProvider = ({ children }) => {
           firstName: foundUser.firstName,
           email: foundUser.email,
           lastName: foundUser.lastName,
+        },
+      });
+      allNoteDispatch({
+        type: "ADD_ALL_DATA",
+        payload: {
+          trash: foundUser.trash,
+          notes: foundUser.notes,
+          archive: foundUser.archive,
         },
       });
     } catch ({
@@ -87,6 +97,14 @@ const AuthProvider = ({ children }) => {
           foundUser: createdUser,
         }),
       );
+      allNoteDispatch({
+        type: "ADD_ALL_DATA",
+        payload: {
+          trash: createdUser.trash,
+          notes: createdUser.notes,
+          archive: createdUser.archive,
+        },
+      });
     } catch ({
       response: {
         data: { error },

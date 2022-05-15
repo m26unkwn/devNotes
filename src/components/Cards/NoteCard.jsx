@@ -1,31 +1,25 @@
 import React, { useState } from "react";
 import { Chip } from "../Chips/Chip";
-import { Archive, Delete, Edit } from "../../assets";
 import "./noteCard.css";
 import { useNote } from "../../context";
 import { Modal } from "../Modal/Modal";
 import { NoteEditor } from "../NoteEditor/NoteEditor";
 import { useHandler } from "../../hooks/use-handler";
+import { Button } from "./Button/Button";
 
 export const NoteCard = ({ note }) => {
   const { updateNote, updateDispatch } = useNote();
   const [edit, setEdit] = useState(false);
   const [handlers] = useHandler();
-  const { title, description, color, lables, priority, _id } = note;
-
-  console.log("id of deleted", _id);
+  const { title, description, color, lables, priority, date } = note;
 
   const editNote = () => {
     updateDispatch({ type: "EDIT_NOTE_STATE", note: note });
     setEdit(true);
   };
 
-  // const closeEdit = () => {
-  //   setEdit((prev) => !prev);
-  // };
-
   return (
-    <div style={{ background: color }} className='card-container'>
+    <div style={{ background: color }} className='note-card card-container'>
       {title && (
         <div className='card-head'>
           <b>{title}</b>
@@ -46,23 +40,18 @@ export const NoteCard = ({ note }) => {
           )}
         </div>
       )}
-      {priority && (
+      <div className=' date-container flex jc-between'>
+        {priority && (
+          <div className='priority-container flex ai-center '>
+            <Chip chipStyle='chip-pd' label={`${priority} Priority`} />
+          </div>
+        )}
         <div className='priority-container flex ai-center '>
-          <p>Priority : </p> <Chip chipStyle='chip-pd' label={priority} />
+          <Chip chipStyle='chip-pd' label={date} />
         </div>
-      )}
+      </div>
       <div className='card-action flex jc-around'>
-        <button
-          onClick={() => handlers.deleteNote(_id)}
-          className='btn btn-icon'>
-          <img src={Delete} alt='add to trash' />
-        </button>
-        <button className='btn btn-icon'>
-          <img src={Archive} alt='add to trash' />
-        </button>
-        <button onClick={editNote} className='btn btn-icon'>
-          <img src={Edit} alt='add to trash' />
-        </button>
+        <Button handlers={handlers} note={note} editNote={editNote} />
       </div>
       {edit && (
         <Modal toggleModal={setEdit}>

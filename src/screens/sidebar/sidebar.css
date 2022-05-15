@@ -1,6 +1,8 @@
 /** @format */
 
 .sidebar-wrapper {
+  grid-area: sidebar;
+  position: fixed;
   width: 15rem;
   height: 100vh;
   background-color: white;

@@ -9,7 +9,7 @@ import "./sidebar.css";
 
 const navlinks = [
   { to: "/home", title: "Home", img: Home },
-  { to: "/label", title: "Labels", img: Bookmark },
+  { to: "/labels", title: "Labels", img: Bookmark },
   { to: "/archive", title: "Archive", img: Archive },
   { to: "/trash", title: "Trash", img: Delete },
 ];
