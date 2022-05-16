@@ -18,6 +18,7 @@ const initialAuthState = {
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialAuthState);
   const { allNoteDispatch } = useNote();
+  console.log({ allNoteDispatch });
 
   const getUserLogin = async (email, password) => {
     try {

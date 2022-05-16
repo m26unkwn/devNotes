@@ -20,3 +20,21 @@
 option {
   width: 30px;
 }
+.mobile-filter-button {
+  display: none;
+}
+@media only screen and (max-width: 480px) {
+  .filter-wrapper {
+    display: none;
+  }
+  .mobile-filter-button {
+    display: flex;
+    margin-top: 2rem;
+  }
+  .mobile-filter {
+    padding: 1rem;
+  }
+  .filter-head {
+    margin-bottom: 1rem;
+  }
+}

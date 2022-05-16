@@ -9,3 +9,4 @@ export { Labels } from "./labels/Labels";
 export { Archive } from "./archive/Archive";
 export { Trash } from "./trash/Trash";
 export { Profile } from "./profile/Profile";
+export { Navigation } from "./sidebar/Navigation";

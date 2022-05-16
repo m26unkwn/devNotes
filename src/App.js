@@ -10,12 +10,12 @@ import {
   Landing,
   Archive,
   Login,
-  Sidebar,
   Signup,
   Home,
   Labels,
   Trash,
   Profile,
+  Navigation,
 } from "./screens";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
     location.pathname === "/signup";
   return (
     <div className={locationFlag ? "" : "main-grid-container"}>
-      {!locationFlag && <Sidebar />}
+      {!locationFlag && <Navigation />}
       <ToastContainer theme='colored' autoClose={2000} position='top-right' />
       <Routes>
         <Route path='/' element={<Landing />} />

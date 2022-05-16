@@ -19,9 +19,7 @@ export const Sidebar = () => {
     <div className='sidebar-wrapper '>
       <div className='sidebar-content flex flex-col'>
         <div className='sidebar-head flex ai-center jc-start'>
-          <NavLink to='/' className='flex'>
-            {/* <img src={Logo} alt='devhub_log' width='40px' height='40px' /> */}
-          </NavLink>
+          <NavLink to='/' className='flex'></NavLink>
           <h1 className='sidebar-logo'>DevNote</h1>
         </div>
         <div className='sidebar-nav-content'>

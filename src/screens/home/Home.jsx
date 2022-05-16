@@ -6,7 +6,11 @@ import { useFilter, useNote } from "../../context";
 import { useHandler } from "../../hooks/use-handler";
 import filterNotes from "../../utils/Filters/FilterNotes";
 import { Filter } from "./filter/Filter";
+import { ReactComponent as FilterIcon } from "../../assets/Filter.svg";
 import "./home.css";
+import { useState } from "react";
+import { Modal } from "../../components";
+import { MobileFitler } from "./filter/MobileFilter";
 
 export const Home = () => {
   const {
@@ -17,12 +21,18 @@ export const Home = () => {
   const { filterState } = useFilter();
   const [handlers] = useHandler();
 
+  const [openFilter, setOpenFitler] = useState();
+
   const filterdNotes = filterNotes(notes, filterState);
 
   const otherNotes =
     filterdNotes.length > 0 ? filterdNotes.filter((note) => !note.pin) : [];
   const pinnedNotes =
     filterdNotes.length > 0 ? filterdNotes.filter((note) => note.pin) : [];
+
+  const filterOpen = () => {
+    setOpenFitler((prev) => !prev);
+  };
 
   return (
     <div className='content-wrapper'>
@@ -32,6 +42,14 @@ export const Home = () => {
         noteDispatch={noteDispatch}
       />
       <Filter />
+      <div className='mobile-filter-button flex jc-center'>
+        <button
+          onClick={filterOpen}
+          style={{ width: "44px" }}
+          className='btn btn-float'>
+          <FilterIcon storke='white' />
+        </button>
+      </div>
       {filterdNotes.length > 0 && (
         <div className=''>
           {pinnedNotes.length > 0 && (
@@ -59,6 +77,11 @@ export const Home = () => {
             </div>
           )}
         </div>
+      )}
+      {openFilter && (
+        <Modal toggleModal={setOpenFitler}>
+          <MobileFitler />
+        </Modal>
       )}
     </div>
   );

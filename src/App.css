@@ -13,7 +13,7 @@
 
 :root {
   /* colors */
-
+  --shadow-md: 0 3px 4px rgba(0, 0, 0, 0.15);
   --bg-container-color: #f7f7f7;
   --bg-color: #ffff;
   --bg-input-color: #f2f2f6;
@@ -30,20 +30,20 @@ body {
 
 .main-grid-container {
   display: grid;
-    grid-template-areas:
-        "sidebar header "
-        "sidebar main ";
+  grid-template-areas:
+    "sidebar header "
+    "sidebar main ";
   grid-template-columns: 15rem 1fr;
 }
-.btn-icon:hover{
-      opacity: 0.87;
-      background-color: rgba(95, 99, 104, 0.157);
+.btn-icon:hover {
+  opacity: 0.87;
+  background-color: rgba(95, 99, 104, 0.157);
 }
 @media only screen and (max-width: 780px) {
   .main-grid-container {
     display: grid;
     grid-template-areas:
-      "sidebar header "
+      "sidebar main "
       "sidebar main ";
     grid-template-columns: 5rem 1fr;
     grid-template-rows: 4rem;
@@ -52,12 +52,7 @@ body {
 
 @media only screen and (max-width: 480px) {
   .main-grid-container {
-    display: grid;
-    grid-template-areas:
-      "header "
-      "main "
-      "mobile";
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
+    display: flex;
+    justify-content: center;
   }
 }
