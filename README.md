@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# Devnotes A note taking application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Devnotes Note is a Note App, where users can create, save, edit, archive and delete note.
 
-## Available Scripts
+## Authors
 
-In the project directory, you can run:
+- [@Monu](https://twitter.com/getumank)
 
-### `yarn start`
+## Live App link
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Magnificent Note](https://devvnote.netlify.app/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies used
 
-### `yarn test`
+- HTML
+- CSS
+- JavaScript
+- ReactJS
+- Mockbee (for mock backend)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features and Functionalities
 
-### `yarn build`
+### 1. Landing page :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Login button
+- Signup button
+- Dark Mode Toggle Button
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Home page :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Note Editor:
 
-### `yarn eject`
+    Create a note with title, body, label, and color (on selecting from the color palette)
+    - Add color to note
+    - Add tags to note
+    - Add priority to note
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Filter Panel:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    There are two variant one is visible on desktop screens and another which has filter floating icon visible on mobile screen
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    - Filter and/or sort notes by:
+    - Filter by tags
+    - Search by note title or content
+    - Sort by creation date
+    - Sort by Priority
 
-## Learn More
+### 3. Label Page :
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- All the notes are listed according to label category.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 4. Archive Page :
 
-### Code Splitting
+- Consist the notes which are archived from home page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 4. Trash Page :
 
-### Analyzing the Bundle Size
+- Consist the notes which are Trashed from home page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 6. Sign Up page -
 
-### Making a Progressive Web App
+- Input first and last name
+- Input email address
+- Input Password and verify password by click show password button
+- Create new account button
+- Already have an account button
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 7. Login page -
 
-### Advanced Configuration
+- Input Username
+- Input password
+- Login button
+- Dummy login data preloaded
+- Create a New Account button
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 8. Log out button
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 10. Alerts/Toasts
 
-### `yarn build` fails to minify
+- User is notified when the password or email is wrong.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 11. Responsiveness
+
+- All pages are made responsive with respect to mobile screens with Width greater than 320px
+- Filter Panel, Header/NavBar, and SearchBar are also made responsive on mobile screens.
+
+
+
+
+## **How to run this app Locally**
+
+To run this app locally on your machine, clone the repo to your local machine.
+
+1. `git clone https://github.com/m26unkwn/devNotes.git`
+2. `cd devnotes`
+   In the project directory, you can run
+3. `npm install`
+4. `npm start`
+
+This will start the app in development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.\
+Make sure you have access to internet to make use of the API call inside the App.
+
+<br>
+
+#### 👨‍💻 Lets connect !
+
+<br>
+
+<a href="https://twitter.com/getumank/"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" width="93px"/></a>
+<a href="https://www.linkedin.com/in/monu-shukla/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="100px"/></a>
