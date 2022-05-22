@@ -50,7 +50,7 @@ export const Home = () => {
           <FilterIcon storke='white' />
         </button>
       </div>
-      {filterdNotes.length > 0 && (
+      {filterdNotes.length > 0 ? (
         <div className=''>
           {pinnedNotes.length > 0 && (
             <div className='note-card-wrapper'>
@@ -77,6 +77,8 @@ export const Home = () => {
             </div>
           )}
         </div>
+      ) : (
+        <h1>You dont have any note here</h1>
       )}
       {openFilter && (
         <Modal toggleModal={setOpenFitler}>

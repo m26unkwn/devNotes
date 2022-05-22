@@ -16,7 +16,7 @@ const initialNoteState = {
 const initialAllNoteState = {
   notes: [],
   trash: [],
-  archive: [],
+  archives: [],
 };
 const NoteContext = createContext({});
 

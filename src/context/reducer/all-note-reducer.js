@@ -21,7 +21,7 @@ export default function allNoteReducer(state, action) {
       return {
         notes: [],
         trash: [],
-        archive: [],
+        archives: [],
       };
     default:
       return state;
