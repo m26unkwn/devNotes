@@ -8,7 +8,7 @@ Devnotes Note is a Note App, where users can create, save, edit, archive and del
 
 ## Live App link
 
-- [Magnificent Note](https://devvnote.netlify.app/)
+- [Dev Note](https://devvnote.netlify.app/)
 
 ## Technologies used
 
