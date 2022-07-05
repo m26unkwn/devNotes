@@ -9,6 +9,7 @@ import { Lables } from "./Label/Lables";
 import "./noteEditor.css";
 import { Pallete } from "./Pallete/Pallete";
 import { Priority } from "./Priority/Priority";
+import { toast } from "react-toastify";
 
 export const NoteEditor = ({ addNote, noteState, noteDispatch }) => {
   const [pallete, setPallete] = useState(false);
@@ -24,7 +25,7 @@ export const NoteEditor = ({ addNote, noteState, noteDispatch }) => {
     if (title.trim(" ").length > 0 || description.trim(" ").length > 0) {
       addNote();
     } else {
-      alert("Enter Note");
+      toast.warning("Please enter Title");
     }
     setLable(false);
     setPallete(false);
