@@ -28,7 +28,7 @@ export const Landing = () => {
             </div>
           </div>
           <div className='content-cta'>
-            <button className='btn'>JOIN NOW</button>
+            <Link to="/signup" className='btn btn-link'>JOIN NOW</Link>
             <p className='login-link'>
               <Link to='/login'>already have an account ?</Link>
             </p>
