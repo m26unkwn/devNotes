@@ -18,7 +18,7 @@ export const Archive = () => {
           {archives.length > 0 ? (
             archives.map((note) => <NoteCard key={note._id} note={note} />)
           ) : (
-            <h2>You don't have any note in archive.</h2>
+            <h2 className='grey-color'>You don't have any note in archive.</h2>
           )}
         </div>
       </div>

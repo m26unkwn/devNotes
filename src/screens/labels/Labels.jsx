@@ -23,7 +23,7 @@ export const Labels = () => {
           {labels.length > 0 ? (
             labels.map((label) => <Label key={label} label={label} />)
           ) : (
-            <h1>You dont have any Labels</h1>
+            <h2 className='grey-color'>You dont have any Labels</h2>
           )}
         </div>
       </div>

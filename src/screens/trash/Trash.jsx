@@ -18,7 +18,7 @@ export const Trash = () => {
           {trash.length > 0 ? (
             trash.map((note) => <NoteCard key={note._id} note={note} />)
           ) : (
-            <h2>You don't have any note in Trash.</h2>
+            <h2 className='grey-color'>You don't have any note in Trash.</h2>
           )}
         </div>
       </div>

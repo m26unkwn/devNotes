@@ -78,7 +78,7 @@ export const Home = () => {
           )}
         </div>
       ) : (
-        <h1>You dont have any note here</h1>
+        <h1 className='text-center grey-color'>You dont have any note here</h1>
       )}
       {openFilter && (
         <Modal toggleModal={setOpenFitler}>
